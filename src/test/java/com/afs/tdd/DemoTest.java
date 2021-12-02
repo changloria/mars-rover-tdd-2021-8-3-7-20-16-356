@@ -2,6 +2,9 @@ package com.afs.tdd;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MarsRoverTest {
@@ -11,7 +14,7 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"N");
         String command = "L";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("0 0 W", actual);
@@ -23,7 +26,7 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"W");
         String command = "L";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("0 0 S", actual);
@@ -35,7 +38,7 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"S");
         String command = "L";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("0 0 E", actual);
@@ -47,7 +50,7 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"E");
         String command = "L";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("0 0 N", actual);
@@ -59,7 +62,7 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"N");
         String command = "R";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("0 0 E", actual);
@@ -71,7 +74,7 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"E");
         String command = "R";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("0 0 S", actual);
@@ -83,7 +86,7 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"S");
         String command = "R";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("0 0 W", actual);
@@ -95,7 +98,7 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"W");
         String command = "R";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("0 0 N", actual);
@@ -107,7 +110,7 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"N");
         String command = "M";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("0 1 N", actual);
@@ -119,7 +122,7 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"S");
         String command = "M";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("0 -1 S", actual);
@@ -131,7 +134,7 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"W");
         String command = "M";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("-1 0 W", actual);
@@ -143,9 +146,21 @@ class MarsRoverTest {
         MarsRover marsRover = new MarsRover(0,0,"E");
         String command = "M";
         //when
-        marsRover.executeCommand(command);
+        marsRover.executeCommands(command);
         String actual = marsRover.getStatus();
         //then
         assertEquals("1 0 E", actual);
+    }
+
+    @Test
+    void should_return_corresponding_position_when_multi_movements_given_multi_command_MLMR() {
+        //given
+        MarsRover marsRover = new MarsRover(0,0,"N");
+        String command = "MLMR";
+        //when
+        marsRover.executeCommands(command);
+        String actual = marsRover.getStatus();
+        //then
+        assertEquals("-1 1 N", actual);
     }
 }

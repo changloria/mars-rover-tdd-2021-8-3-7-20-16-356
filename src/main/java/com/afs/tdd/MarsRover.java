@@ -1,5 +1,6 @@
 package com.afs.tdd;
 
+import java.util.List;
 import java.util.Objects;
 
 public class MarsRover {
@@ -13,13 +14,25 @@ public class MarsRover {
         this.direction = direction;
     }
 
-    public void executeCommand(String command) {
-        if(Objects.equals(command, "L")){
-            turnLeft();
-        }else if(Objects.equals(command, "R")){
-            turnRight();
-        }else if(Objects.equals(command, "M")){
-            moveForward();
+    public void executeCommands(String command) {
+        for (char comm: command.toCharArray()) {
+            executeCommand(comm);
+        }
+    }
+    private void executeCommand(char oneCommand) {
+        switch (oneCommand) {
+            case 'M': {
+                moveForward();
+                break;
+            }
+            case 'L': {
+                turnLeft();
+                break;
+            }
+            case 'R': {
+                turnRight();
+                break;
+            }
         }
     }
 
