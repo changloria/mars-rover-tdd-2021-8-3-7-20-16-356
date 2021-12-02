@@ -18,6 +18,14 @@ public class MarsRover {
             turnLeft();
         }else if(Objects.equals(command, "R")){
             turnRight();
+        }else if(Objects.equals(command, "M")){
+            moveForward();
+        }
+    }
+
+    private void moveForward() {
+        if(direction.equals("N")){
+            locationY++;
         }
     }
 
