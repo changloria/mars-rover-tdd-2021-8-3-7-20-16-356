@@ -112,4 +112,16 @@ class MarsRoverTest {
         //then
         assertEquals("0 1 N", actual);
     }
+
+    @Test
+    void should_return_locationY_minus1_when_moveForward_given_locationPoint_S() {
+        //given
+        MarsRover marsRover = new MarsRover(0,0,"S");
+        String command = "M";
+        //when
+        marsRover.executeCommand(command);
+        String actual = marsRover.getStatus();
+        //then
+        assertEquals("0 -1 S", actual);
+    }
 }
