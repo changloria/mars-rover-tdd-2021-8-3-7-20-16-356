@@ -100,4 +100,16 @@ class MarsRoverTest {
         //then
         assertEquals("0 0 N", actual);
     }
+
+    @Test
+    void should_return_locationY_add1_when_moveForward_given_locationPoint_W() {
+        //given
+        MarsRover marsRover = new MarsRover(0,0,"N");
+        String command = "M";
+        //when
+        marsRover.executeCommand(command);
+        String actual = marsRover.getStatus();
+        //then
+        assertEquals("0 1 N", actual);
+    }
 }
