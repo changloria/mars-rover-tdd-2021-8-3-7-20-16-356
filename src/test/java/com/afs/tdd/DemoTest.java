@@ -76,4 +76,16 @@ class MarsRoverTest {
         //then
         assertEquals("0 0 S", actual);
     }
+
+    @Test
+    void should_return_locationPoint_W_when_turnRight_given_locationPoint_S() {
+        //given
+        MarsRover marsRover = new MarsRover(0,0,"S");
+        String command = "R";
+        //when
+        marsRover.executeCommand(command);
+        String actual = marsRover.getStatus();
+        //then
+        assertEquals("0 0 W", actual);
+    }
 }
