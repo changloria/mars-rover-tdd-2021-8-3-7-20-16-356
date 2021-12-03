@@ -1,8 +1,5 @@
 package com.afs.tdd;
 
-import java.util.List;
-import java.util.Objects;
-
 public class MarsRover {
     private int locationX;
     private int locationY;
@@ -15,12 +12,13 @@ public class MarsRover {
     }
 
     public void executeCommands(String command) {
+        //For looping each character of the String, for example: "MLM" -> M,L,M...
         for (char comm: command.toCharArray()) {
             executeCommand(comm);
         }
     }
-    private void executeCommand(char oneCommand) {
-        switch (oneCommand) {
+    private void executeCommand(char command) {
+        switch (command) {
             case 'M': {
                 moveForward();
                 break;
